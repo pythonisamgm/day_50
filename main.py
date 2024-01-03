@@ -7,8 +7,8 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-FB_EMAIL= "pythonisamgm@gmail.com"
-FB_PASSWORD = "#s_G84)6Ja*/_N@"
+FB_EMAIL= FB_EMAIL
+FB_PASSWORD = FB_PASSWORD
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
 

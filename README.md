@@ -5,7 +5,7 @@ TINDER AUTO-SWIPING BOT
   I present two versions/different functions: one to swipe-like and one to swipe-nope.
   
   Some challenges I have found: 
-  loggin through facebook page I had to sort some difficulties because the id changes every time to prevent bots.
-  to raise exceptions for 1) time delays in tinder page; and 2) going back to profile pictures when a match ocurrs.
+  loggin through facebook page (I had to sort some difficulties because the id changes every time to prevent bots.)
+  Another challenge was to raise exceptions for 1) time delays in tinder page; and 2) going back to profile pictures when a match ocurrs, when tinder offers a shortcat for the app or when it wants us to pay for the gold services.
   
   due to ethical priciples I have not run the "like version"

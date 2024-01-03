@@ -27,12 +27,20 @@ def click_like():
 
 def click_nope():
     for n in range(30):
+        driver.find_element(By.TAG_NAME,
+                            "body").send_keys(Keys.ARROW_LEFT)
+        time.sleep(5)
         try:
-            driver.find_element(By.TAG_NAME,
-                                          "body").send_keys(Keys.ARROW_LEFT)
-            time.sleep(5)
-        except NoSuchElementException:
+            #add tinder shortcut decline.
+            driver.find_element(By.XPATH, '//*[@id="u647161393"]/main/div/div[2]/button[2]').click()
+            print("we got so far")
             time.sleep(10)
+            # tinder gold decline.
+            driver.find_element(By.XPATH, '//*[@id="u647161393"]/main/div/div[2]/button').click()
+        except NoSuchElementException:
+            print("nope")
+
+
 
 driver.get("https://tinder.com/")
 privacy_settings = driver.find_element(By.XPATH, '//*[@id="u-1919424827"]/div/div[2]/div/div/div[1]/div[1]/button').click()
@@ -74,7 +82,7 @@ driver.switch_to.window(base_window)
 print(driver.title)
 
 #---------------------------------------------------------TINDER POP UPS ----------------------------------------
-
+time.sleep(15)
 #tinder: agree to location's preferences
 location = driver.find_element(By.XPATH, '//*[@id="u647161393"]/main/div/div/div/div[3]/button[1]').click()
 
@@ -89,7 +97,7 @@ time.sleep(5)
 # Uncoment the function you prefer: click_like or click_nope so you don't break any hearts, because as Miley says, "nothing breaks like a heart"
 
 #click_like()
-#click_nope()
+click_nope()
 
 
 

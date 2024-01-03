@@ -1,4 +1,4 @@
-
+from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
@@ -13,18 +13,26 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 
 
 def click_like():
-    like_button = driver.find_element(By.XPATH,
-                                      '//*[@id="u-1919424827"]/div/div[1]/div/div/main/div/div/div[1]/div/div[3]/div/div[4]/button')
-    like_button.click()
-    time.sleep(4)
-
+    for n in range(30):
+        try:
+            driver.find_element(By.TAG_NAME,
+                                              "body").send_keys(Keys.ARROW_RIGHT)
+            time.sleep(4)
+        except ElementClickInterceptedException:
+            try:
+                driver.find_element(By.TAG_NAME, "body").send_keys(Keys.ESCAPE)
+                time.sleep(2)
+            except NoSuchElementException:
+                time.sleep(3)
 
 def click_nope():
-    time.sleep(5)
-    nope_button = driver.find_element(By.XPATH,
-                                      '/html/body/div[1]/div/div[1]/div/div/main/div/div/div[1]/div/div[3]/div/div[2]/button')
-    nope_button.click()
-    time.sleep(4)
+    for n in range(30):
+        try:
+            driver.find_element(By.TAG_NAME,
+                                          "body").send_keys(Keys.ARROW_LEFT)
+            time.sleep(5)
+        except NoSuchElementException:
+            time.sleep(10)
 
 driver.get("https://tinder.com/")
 privacy_settings = driver.find_element(By.XPATH, '//*[@id="u-1919424827"]/div/div[2]/div/div/div[1]/div[1]/button').click()
@@ -78,9 +86,10 @@ time.sleep(5)
 #cookies = driver.find_element(By.XPATH, '').click()
 
 
-#click nope so you don't break any hearts, because as Miley says, "nothing breaks like a heart"
-for n in range (101):
-    click_nope()
-    time.sleep(3)
+# Uncoment the function you prefer: click_like or click_nope so you don't break any hearts, because as Miley says, "nothing breaks like a heart"
+
+#click_like()
+#click_nope()
+
 
 
